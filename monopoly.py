@@ -1,6 +1,8 @@
 from terminal_color import color_print
 import random
 
+rules = "   A1 A2 A3  A4\n   ⬜  ⬜  ⬜  ⬜\nB1 ⬜  ⬜  ⬜  ⬜ B4\nC1 ⬜  ⬜  ⬜  ⬜ C4\n   ⬜  ⬜  ⬜  ⬜\n   D1 D2 D3  D4"
+
 
 def main():
     the_map = [
@@ -9,7 +11,7 @@ def main():
         [2, 3, 3, 1],
         [0, 0, 2, 0]
     ]
-
+    print(rules)
     running = True
     while running:
         for row in the_map:
@@ -24,7 +26,7 @@ def main():
                 color_print(color, "⬜", end=" ")
             print()
         print(random.choice([1, 2, 3, 4, 5, 6]))
-        input()
+        move = input()
 
 
 if __name__ == '__main__':
