@@ -1,5 +1,6 @@
 from terminal_color import color_print
 import random
+import settings
 
 rules = " This is the map\n" \
         "      A2  A3\n" \
