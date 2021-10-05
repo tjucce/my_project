@@ -18,13 +18,13 @@ def main():
         [0, 0, 2, 0]
     ]
     player_in_turn = 1
+    running = True
     print(rules)
     game = input("Do you want to play monopoly? ")
 
     if game.lower() == "no":
         running = False
     else:
-        running = True
         player1 = input("Player1 what is your name? ")
         player2 = input("Player2 what is your name? ")
         while running:
