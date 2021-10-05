@@ -1,7 +1,13 @@
 from terminal_color import color_print
 import random
 
-rules = "   A1 A2 A3  A4\n   ⬜  ⬜  ⬜  ⬜\nB1 ⬜  ⬜  ⬜  ⬜ B4\nC1 ⬜  ⬜  ⬜  ⬜ C4\n   ⬜  ⬜  ⬜  ⬜\n   D1 D2 D3  D4\n"
+rules = " This is the map\n" \
+        "      A2  A3\n" \
+        "A1 ⬜  ⬜  ⬜  ⬜ A4\n" \
+        "B1 ⬜  ⬜  ⬜  ⬜ B4\n" \
+        "C1 ⬜  ⬜  ⬜  ⬜ C4\n" \
+        "D1 ⬜  ⬜  ⬜  ⬜ D4\n" \
+        "      D2  D3\n"
 
 
 def main():
