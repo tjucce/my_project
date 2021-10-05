@@ -49,4 +49,3 @@ elif place == 11:
 
 print(position)
 print(place)
-
