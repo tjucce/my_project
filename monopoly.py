@@ -1,5 +1,7 @@
 from terminal_color import color_print
 import random
+from settings import in_game_settings
+
 
 rules = " This is the map\n" \
         "      A2  A3\n" \
@@ -10,13 +12,42 @@ rules = " This is the map\n" \
         "      D2  D3\n"
 
 
+def player_1(player1, running, player1_place):
+    choice = input(f"{player1} what do you want to do? ")
+    if choice.lower() == "quit":
+        running = False
+    elif choice.lower() == "rules":
+        print(rules)
+    elif choice.lower() == "roll":
+        dice = random.choice([1, 2, 3, 4, 5, 6])
+        print(f"You rolled a {dice}")
+        move1 = in_game_settings(dice + player1_place)
+        return dice
+
+
+def player_2(player2, running, player2_place):
+    choice = input(f"{player2} what do you want to do? ")
+    if choice.lower() == "quit":
+        running = False
+    elif choice.lower() == "rules":
+        print(rules)
+    elif choice.lower() == "roll":
+        dice = random.choice([1, 2, 3, 4, 5, 6])
+        print(f"You rolled a {dice}")
+        move2 = in_game_settings(dice + player2_place)
+        return dice
+
+
 def main():
     the_map = [
-        [0, 0, 1, 0],
-        [1, 3, 3, 0],
-        [2, 3, 3, 1],
-        [0, 0, 2, 0]
+        [0, 1, 0, 0],
+        [4, 5, 5, 2],
+        [0, 5, 5, 0],
+        [0, 3, 0, 0]
     ]
+
+    player1_place = 0
+    player2_place = 0
     player_in_turn = 1
     running = True
     print(rules)
@@ -32,32 +63,27 @@ def main():
                 for cell in row:
                     color = "white"
                     if cell == 1:
-                        color = "red"
+                        color = "yellow"
                     elif cell == 2:
-                        color = "blue"
+                        color = "red"
                     elif cell == 3:
+                        color = "green"
+                    elif cell == 4:
+                        color = "blue"
+                    elif cell == 5:
                         color = "black"
                     color_print(color, "⬜", end=" ")
                 print()
-            print(random.choice([1, 2, 3, 4, 5, 6]))
 
             if player_in_turn == 1:
-                choice = input(f"{player1} what do you want to do? ")
-                if choice.lower() == "quit":
-                    running = False
-                elif choice.lower() == "rules":
-                    print(rules)
-                else:
-                    player_in_turn = 2
+                moving1 = player_1(player1, running, player1_place)
+                player1_place += moving1
+                player_in_turn = 2
 
             elif player_in_turn == 2:
-                choice = input(f"{player2} what do you want to do? ")
-                if choice.lower() == "quit":
-                    running = False
-                elif choice.lower() == "rules":
-                    print(rules)
-                else:
-                    player_in_turn = 1
+                moving2 = player_2(player2, running, player2_place)
+                player2_place += moving2
+                player_in_turn = 1
 
 
 if __name__ == '__main__':
