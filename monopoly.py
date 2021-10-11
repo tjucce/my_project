@@ -12,30 +12,60 @@ rules = " This is the map\n" \
         "      D2  D3\n"
 
 
-def player_1(player1, running, player1_place):
+def visual_map(the_map):
+    for row in the_map:
+        for cell in row:
+            color = "white"
+            if cell == 1:
+                color = "yellow"
+            elif cell == 2:
+                color = "red"
+            elif cell == 3:
+                color = "green"
+            elif cell == 4:
+                color = "blue"
+            elif cell == 5:
+                color = "black"
+            color_print(color, "⬜", end=" ")
+        print()
+
+
+def player_1(player1, running, player1_place, money1):
     choice = input(f"{player1} what do you want to do? ")
     if choice.lower() == "quit":
-        running = False
+        return "quit"
     elif choice.lower() == "rules":
         print(rules)
+    elif choice.lower() == "money":
+        print(money1)
     elif choice.lower() == "roll":
         dice = random.choice([1, 2, 3, 4, 5, 6])
         print(f"You rolled a {dice}")
-        move1 = in_game_settings(dice + player1_place)
+        if player1_place + dice >= 12:
+            money1 += 200
+        in_game_settings(dice + player1_place)
         return dice
+    elif choice.lower() != "quit" or "rules" or "roll":
+        print("Cant do that")
 
 
-def player_2(player2, running, player2_place):
+def player_2(player2, running, player2_place, money2):
     choice = input(f"{player2} what do you want to do? ")
     if choice.lower() == "quit":
-        running = False
+        return "quit"
     elif choice.lower() == "rules":
         print(rules)
+    elif choice.lower() == "money":
+        print(money2)
     elif choice.lower() == "roll":
         dice = random.choice([1, 2, 3, 4, 5, 6])
         print(f"You rolled a {dice}")
-        move2 = in_game_settings(dice + player2_place)
+        if player2_place + dice >= 12:
+            money2 += 200
+        in_game_settings(dice + player2_place)
         return dice
+    elif choice.lower() != "quit" or "rules" or "roll":
+        print("Cant do that")
 
 
 def main():
@@ -48,6 +78,8 @@ def main():
 
     player1_place = 0
     player2_place = 0
+    money1 = 500
+    money2 = 500
     player_in_turn = 1
     running = True
     print(rules)
@@ -58,32 +90,27 @@ def main():
     else:
         player1 = input("Player1 what is your name? ")
         player2 = input("Player2 what is your name? ")
-        while running:
-            for row in the_map:
-                for cell in row:
-                    color = "white"
-                    if cell == 1:
-                        color = "yellow"
-                    elif cell == 2:
-                        color = "red"
-                    elif cell == 3:
-                        color = "green"
-                    elif cell == 4:
-                        color = "blue"
-                    elif cell == 5:
-                        color = "black"
-                    color_print(color, "⬜", end=" ")
-                print()
-
-            if player_in_turn == 1:
-                moving1 = player_1(player1, running, player1_place)
+    while running:
+        visual_map(the_map)
+        if player_in_turn == 1:
+            moving1 = player_1(player1, running, player1_place, money1)
+            if type(moving1) == int:
                 player1_place += moving1
                 player_in_turn = 2
+            elif type(moving1) == str:
+                running = False
+            else:
+                player_in_turn = 1
 
-            elif player_in_turn == 2:
-                moving2 = player_2(player2, running, player2_place)
+        elif player_in_turn == 2:
+            moving2 = player_2(player2, running, player2_place, money2)
+            if type(moving2) == int:
                 player2_place += moving2
                 player_in_turn = 1
+            elif type(moving2) == str:
+                running = False
+            else:
+                player_in_turn = 2
 
 
 if __name__ == '__main__':
