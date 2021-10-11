@@ -78,8 +78,8 @@ def main():
 
     player1_place = 0
     player2_place = 0
-    money1 = 500
-    money2 = 500
+    money1 = 400
+    money2 = 400
     player_in_turn = 1
     running = True
     print(rules)
