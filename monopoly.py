@@ -3,7 +3,7 @@ import random
 from settings import in_game_settings
 
 
-rules = " This is the map\n" \
+rules = " This is the board\n" \
         "      A2  A3\n" \
         "A1 ⬜  ⬜  ⬜  ⬜ A4\n" \
         "B1 ⬜  ⬜  ⬜  ⬜ B4\n" \
@@ -12,8 +12,8 @@ rules = " This is the map\n" \
         "      D2  D3\n"
 
 
-def visual_map(the_map):
-    for row in the_map:
+def visual_map(board):
+    for row in board:
         for cell in row:
             color = "white"
             if cell == 1:
@@ -69,7 +69,7 @@ def player_2(player2, running, player2_place, money2):
 
 
 def main():
-    the_map = [
+    board = [
         [0, 1, 0, 0],
         [4, 5, 5, 2],
         [0, 5, 5, 0],
@@ -91,7 +91,7 @@ def main():
         player1 = input("Player1 what is your name? ")
         player2 = input("Player2 what is your name? ")
     while running:
-        visual_map(the_map)
+        visual_map(board)
         if player_in_turn == 1:
             moving1 = player_1(player1, running, player1_place, money1)
             if type(moving1) == int:
