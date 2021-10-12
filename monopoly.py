@@ -83,13 +83,13 @@ def main():
     player_in_turn = 1
     running = True
     print(rules)
-    game = input("Do you want to play monopoly? ")
-
-    if game.lower() == "no":
-        running = False
-    else:
-        player1 = input("Player1 what is your name? ")
-        player2 = input("Player2 what is your name? ")
+    print("Lets play monopoly")
+    player1 = input("Player1 what is your name? ")
+    if player1 == "quit":
+        quit()
+    player2 = input("Player2 what is your name? ")
+    if player2 == "quit":
+        quit()
     while running:
         visual_map(board)
         if player_in_turn == 1:
