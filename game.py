@@ -1,12 +1,13 @@
 from board import Board
+from placement import Placement
 from blue_player import BluePlayer
 from red_player import RedPlayer
 
 
 class Game:
     def __init__(self):
-        self.blue_player = BluePlayer(0)
-        self.red_player = RedPlayer(0)
+        self.blue_player = BluePlayer(Placement(0))
+        self.red_player = RedPlayer(Placement(0))
         self.running = True
         self.blue_name = input("Blue player what is you name: ")
         self.red_name = input("Red player what is you name: ")

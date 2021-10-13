@@ -4,10 +4,10 @@ from terminal_color import color_print
 class Board:
     def __init__(self):
         self.board = [
-                [0, 1, 0, 0],
+                [7, 1, 7, 7],
                 [4, 0, 0, 2],
-                [0, 0, 0, 0],
-                [0, 3, 0, 0]
+                [7, 0, 0, 7],
+                [7, 3, 7, 7]
             ]
 
     def print_board(self):
@@ -26,5 +26,7 @@ class Board:
                     color = "blue"
                 elif cell == 6:
                     color = "red"
+                elif cell == 7:
+                    color = "grey"
                 color_print(color, "⬜", end=" ")
             print()
