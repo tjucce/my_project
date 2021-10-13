@@ -19,13 +19,15 @@ def visual_map(board):
             if cell == 1:
                 color = "yellow"
             elif cell == 2:
-                color = "red"
+                color = "magenta"
             elif cell == 3:
                 color = "green"
             elif cell == 4:
-                color = "blue"
-            elif cell == 5:
                 color = "black"
+            elif cell == 5:
+                color = "blue"
+            elif cell == 6:
+                color = "red"
             color_print(color, "⬜", end=" ")
         print()
 
@@ -71,8 +73,8 @@ def player_2(player2, running, player2_place, money2):
 def main():
     board = [
         [0, 1, 0, 0],
-        [4, 5, 5, 2],
-        [0, 5, 5, 0],
+        [4, 0, 0, 2],
+        [0, 0, 0, 0],
         [0, 3, 0, 0]
     ]
 
@@ -84,10 +86,10 @@ def main():
     running = True
     print(rules)
     print("Lets play monopoly")
-    player1 = input("Player1 what is your name? ")
+    player1 = input("Blue player what is your name? ")
     if player1 == "quit":
         quit()
-    player2 = input("Player2 what is your name? ")
+    player2 = input("Red player what is your name? ")
     if player2 == "quit":
         quit()
     while running:
