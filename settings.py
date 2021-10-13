@@ -1,22 +1,22 @@
 def in_game_settings(dice):
-    the_map = [
+    the_board = [
         [0, 1, 0, 0],
         [4, 0, 0, 2],
         [0, 0, 0, 0],
         [0, 3, 0, 0]
     ]
-    a1 = the_map[0][0]
-    a2 = the_map[0][1]
-    a3 = the_map[0][2]
-    a4 = the_map[0][3]
-    b1 = the_map[1][0]
-    b4 = the_map[1][3]
-    c1 = the_map[2][0]
-    c4 = the_map[2][3]
-    d1 = the_map[3][0]
-    d2 = the_map[3][1]
-    d3 = the_map[3][2]
-    d4 = the_map[3][3]
+    a1 = the_board[0][0]
+    a2 = the_board[0][1]
+    a3 = the_board[0][2]
+    a4 = the_board[0][3]
+    b1 = the_board[1][0]
+    b4 = the_board[1][3]
+    c1 = the_board[2][0]                    
+    c4 = the_board[2][3]
+    d1 = the_board[3][0]
+    d2 = the_board[3][1]
+    d3 = the_board[3][2]
+    d4 = the_board[3][3]
 
     position = a1
     place = dice
