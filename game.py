@@ -11,7 +11,12 @@ class Game:
         self.running = True
         self.blue_name = input("Blue player what is you name: ")
         self.red_name = input("Red player what is you name: ")
-        self.board = Board()
+        self.board = Board([
+                [7, 1, 7, 7],
+                [4, 0, 0, 2],
+                [7, 0, 0, 7],
+                [7, 3, 7, 7]
+            ])
         self.turn = 1
 
     def run(self):
@@ -21,11 +26,8 @@ class Game:
                 self.board.print_board()
                 self.blue_player_input()
             elif self.turn == 2:
-                self.red_board_info()
+                self.board.print_board()
                 self.red_player_input()
-
-    def blue_board_info(self):
-        self.board.print_board()
 
     def blue_player_input(self):
         print(f"{self.blue_name} what do you want to do? ")
@@ -33,15 +35,16 @@ class Game:
 
         if blue_command.lower() == "roll":
             self.blue_player.roll_dice()
-            print(self.blue_player.my_position())
             self.board.current_placement(self.blue_player.my_position())
+            print(self.blue_player.my_position())
+        elif blue_command.lower() == "buy":
+            self.board.check_owner(self.board.current_placement(self.blue_player.my_position()))
         elif blue_command.lower() == "done":
             self.turn = 2
         elif blue_command.lower() == "quit" or "exit":
             self.running = False
-
-    def red_board_info(self):
-        self.board.print_board()
+        else:
+            print("Input not valid")
 
     def red_player_input(self):
         print(f"{self.red_name} what do you want to do? ")

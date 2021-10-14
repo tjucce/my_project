@@ -3,13 +3,8 @@ from houses import houses
 
 
 class Board:
-    def __init__(self):
-        self.board = [
-                [7, 1, 7, 7],
-                [4, 0, 0, 2],
-                [7, 0, 0, 7],
-                [7, 3, 7, 7]
-            ]
+    def __init__(self, board):
+        self.board = board
 
     def print_board(self):
         for row in self.board:
@@ -39,6 +34,12 @@ class Board:
         elif placement == 1:
             #  position = a2
             print("You are at A2")
+            if self.board[0][1] == 1:
+                print("A yellow house for sale")
+            elif self.board[0][1] == 5:
+                print("You are on your own house")
+            elif self.board[0][1] == 6:
+                print("You are on red players house, time to pay")
 
         elif placement == 2:
             #  position = a3
@@ -70,3 +71,11 @@ class Board:
         elif placement == 11:
             #  position = b1
             print("You are at B1")
+
+    def check_owner(self, position):
+        if position == 1:
+            self.board[0][1] = 5
+            print("Congratz you bought the house")
+            
+
+
