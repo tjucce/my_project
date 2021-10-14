@@ -12,14 +12,17 @@ class Game:
         self.blue_name = input("Blue player what is you name: ")
         self.red_name = input("Red player what is you name: ")
         self.board = Board()
+        self.turn = 1
 
     def run(self):
         print(f"Welcome {self.blue_name} and {self.red_name} lets play monopoly")
         while self.running:
-            self.blue_board_info()
-            self.blue_player_input()
-            self.red_board_info()
-            self.red_player_input()
+            if self.turn == 1:
+                self.board.print_board()
+                self.blue_player_input()
+            elif self.turn == 2:
+                self.red_board_info()
+                self.red_player_input()
 
     def blue_board_info(self):
         self.board.print_board()
@@ -30,6 +33,12 @@ class Game:
 
         if blue_command.lower() == "roll":
             self.blue_player.roll_dice()
+            print(self.blue_player.my_position())
+            self.board.current_placement(self.blue_player.my_position())
+        elif blue_command.lower() == "done":
+            self.turn = 2
+        elif blue_command.lower() == "quit" or "exit":
+            self.running = False
 
     def red_board_info(self):
         self.board.print_board()
@@ -40,3 +49,8 @@ class Game:
 
         if red_command.lower() == "roll":
             self.red_player.roll_dice()
+            print(self.blue_player.my_position())
+        elif red_command.lower() == "done":
+            self.turn = 1
+        elif red_command.lower() == "quit" or "exit":
+            self.running = False
