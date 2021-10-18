@@ -80,4 +80,4 @@ class Board:
                 [7, 0, 0, 7],
                 [7, 3, 7, 7]
             ])
-            print("Congratz you bought the house")
+            print("Congratulations you bought the house")
