@@ -74,8 +74,10 @@ class Board:
 
     def check_owner(self, position):
         if position == 1:
-            self.board[0][1] = 5
+            self.board.__init__([
+                [7, 5, 7, 7],
+                [4, 0, 0, 2],
+                [7, 0, 0, 7],
+                [7, 3, 7, 7]
+            ])
             print("Congratz you bought the house")
-            
-
-

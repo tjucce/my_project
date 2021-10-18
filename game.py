@@ -38,7 +38,14 @@ class Game:
             self.board.current_placement(self.blue_player.my_position())
             print(self.blue_player.my_position())
         elif blue_command.lower() == "buy":
-            self.board.check_owner(self.board.current_placement(self.blue_player.my_position()))
+            if self.blue_player.my_position() == 1:
+                self.board.__init__([
+                [7, 5, 7, 7],
+                [4, 0, 0, 2],
+                [7, 0, 0, 7],
+                [7, 3, 7, 7]
+            ])
+            #  self.board.check_owner(self.board.current_placement(self.blue_player.my_position()))
         elif blue_command.lower() == "done":
             self.turn = 2
         elif blue_command.lower() == "quit" or "exit":
