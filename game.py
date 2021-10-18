@@ -11,13 +11,9 @@ class Game:
         self.running = True
         self.blue_name = input("Blue player what is you name: ")
         self.red_name = input("Red player what is you name: ")
-        self.board = Board([
-                [7, 1, 7, 7],
-                [4, 0, 0, 2],
-                [7, 0, 0, 7],
-                [7, 3, 7, 7]
-            ])
+        self.board = Board()
         self.turn = 1
+        self.rolls = 1
 
     def run(self):
         print(f"Welcome {self.blue_name} and {self.red_name} lets play monopoly")
@@ -34,18 +30,17 @@ class Game:
         blue_command = input("> ")
 
         if blue_command.lower() == "roll":
-            self.blue_player.roll_dice()
-            self.board.current_placement(self.blue_player.my_position())
-            print(self.blue_player.my_position())
+            if self.rolls > 1:
+                print("You have already rolled the dice, its the other players turn now")
+                self.rolls = 1
+                self.turn = 2
+            elif self.rolls == 1:
+                self.blue_player.roll_dice()
+                self.board.current_placement(self.blue_player.my_position())
+                print(self.blue_player.my_position())
+                #  self.rolls += 1
         elif blue_command.lower() == "buy":
-            if self.blue_player.my_position() == 1:
-                self.board.__init__([
-                [7, 5, 7, 7],
-                [4, 0, 0, 2],
-                [7, 0, 0, 7],
-                [7, 3, 7, 7]
-            ])
-            #  self.board.check_owner(self.board.current_placement(self.blue_player.my_position()))
+            self.board.check_owner_blue_player(self.blue_player.my_position())
         elif blue_command.lower() == "done":
             self.turn = 2
         elif blue_command.lower() == "quit" or "exit":
@@ -58,8 +53,14 @@ class Game:
         red_command = input("> ")
 
         if red_command.lower() == "roll":
-            self.red_player.roll_dice()
-            print(self.blue_player.my_position())
+            if self.rolls > 1:
+                print("You have already rolled the dice, its the other players turn now")
+                self.rolls = 1
+                self.turn = 1
+            elif self.rolls == 1:
+                self.red_player.roll_dice()
+                print(self.blue_player.my_position())
+                self.rolls += 1
         elif red_command.lower() == "done":
             self.turn = 1
         elif red_command.lower() == "quit" or "exit":
