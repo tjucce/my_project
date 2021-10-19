@@ -31,16 +31,25 @@ class Game:
 
         if blue_command.lower() == "roll":
             if self.rolls > 1:
-                print("You have already rolled the dice, its the other players turn now")
+                print(f"You can only roll the dice once, its {self.red_name}s turn now")
                 self.rolls = 1
                 self.turn = 2
             elif self.rolls == 1:
                 self.blue_player.roll_dice()
-                self.board.current_placement(self.blue_player.my_position())
+                owner = self.board.current_placement(self.blue_player.my_position())
+                if owner == 2:
+                    self.turn = 2
                 print(self.blue_player.my_position())
                 #  self.rolls += 1
         elif blue_command.lower() == "buy":
-            self.board.check_owner_blue_player(self.blue_player.my_position())
+            if self.blue_player.my_position() == 1 or 4 or 8 or 11:
+                enough = self.blue_player.buy_property(self.blue_player.my_position())
+                if enough == "yes":
+                    self.board.check_owner_blue_player(self.blue_player.my_position())
+                    self.turn = 2
+                elif enough == "no":
+                    print(f"Not enough money, its {self.red_name}s turn now")
+                    self.turn = 2
         elif blue_command.lower() == "done":
             self.turn = 2
         elif blue_command.lower() == "quit" or "exit":
@@ -54,7 +63,7 @@ class Game:
 
         if red_command.lower() == "roll":
             if self.rolls > 1:
-                print("You have already rolled the dice, its the other players turn now")
+                print(f"You can only roll the dice once, its {self.blue_name}s turn now")
                 self.rolls = 1
                 self.turn = 1
             elif self.rolls == 1:
