@@ -40,7 +40,6 @@ class BluePlayer:
             else:
                 return "no"
 
-
     def sell_property(self):
         pass
 
