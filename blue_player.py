@@ -1,17 +1,38 @@
 import random
 
+from my_project.houses import houses
+
 
 class BluePlayer:
     def __init__(self, placement):
         self.placement = placement
         self.portfolio = []
+        self.add_house_by_id('id2')
         self.money = 200
+        #self.remove_house_by_id('id2')
+
+
+    def add_house_by_id(self, house_id):
+        for house in houses:
+            if house['id'] == house_id:
+                self.portfolio.append(house)
+
+    def remove_house_by_id(self, house_id):
+        remove_index = -1
+        for i, house in enumerate(self.portfolio):
+            if house['id'] == house_id:
+                remove_index = i
+        if remove_index >= 0:
+            self.portfolio.pop(remove_index)
 
     def roll_dice(self):
         dice = random.choice([1, 2, 3, 4, 5, 6])
         print(f"You rolled a {dice}")
         self.placement.position += dice
         if self.placement.position >= 12:
+            self.money += 100
+            print("You have walked around the hole block, you get 100$")
+            print(f"You now have {self.money}$")
             self.placement.position -= 12
 
     def buy_property(self, house):

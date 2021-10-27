@@ -40,8 +40,10 @@ class Game:
                 owner = self.board.current_placement_blue_player(self.blue_player.my_position())
                 if owner == 2:
                     self.turn = 2
+                    self.rolls = 1
+                elif owner == 1:
+                    self.rolls += 1
                 print(self.blue_player.my_position())
-                self.rolls += 1
         elif blue_command.lower() == "buy":
             if self.blue_player.my_position() == 1 or 4 or 8 or 11:
                 enough = self.blue_player.buy_property(self.blue_player.my_position())
@@ -75,8 +77,10 @@ class Game:
                 owner = self.board.current_placement_red_player(self.red_player.my_position())
                 if owner == 1:
                     self.turn = 1
+                    self.rolls = 1
+                elif owner == 2:
+                    self.rolls += 1
                 print(self.red_player.my_position())
-                self.rolls += 1
         elif red_command.lower() == "done":
             self.turn = 1
             self.rolls = 1

@@ -12,6 +12,9 @@ class RedPlayer:
         print(f"You rolled a {dice}")
         self.placement.position += dice
         if self.placement.position >= 12:
+            self.money += 100
+            print("You have walked around the hole block, you get 100$")
+            print(f"You now have {self.money}$")
             self.placement.position -= 12
 
     def buy_property(self, house):
