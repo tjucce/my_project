@@ -1,18 +1,18 @@
 streets = [
     {
         "house": ["id1"],
-        "description": "a yellow house"
+        "description": "a yellow street"
     },
     {
         "house": ["id2"],
-        "description": "a purple house"
+        "description": "a purple street"
     },
     {
         "house": ["id3"],
-        "description": "a green house"
+        "description": "a green street"
     },
     {
         "house": ["id4"],
-        "description": "a black house"
+        "description": "a black street"
     }
 ]
