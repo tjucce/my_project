@@ -1,26 +1,24 @@
 import random
-
-from my_project.houses import houses
+from houses import houses
 
 
 class BluePlayer:
     def __init__(self, placement):
         self.placement = placement
         self.portfolio = []
-        self.add_house_by_id('id2')
+        #self.add_house_by_id("id4")
         self.money = 200
         #self.remove_house_by_id('id2')
 
-
     def add_house_by_id(self, house_id):
         for house in houses:
-            if house['id'] == house_id:
+            if house["id"] == house_id:
                 self.portfolio.append(house)
 
     def remove_house_by_id(self, house_id):
         remove_index = -1
         for i, house in enumerate(self.portfolio):
-            if house['id'] == house_id:
+            if house["id"] == house_id:
                 remove_index = i
         if remove_index >= 0:
             self.portfolio.pop(remove_index)
@@ -60,6 +58,8 @@ class BluePlayer:
                 return "yes"
             else:
                 return "no"
+        else:
+            return "no house"
 
     def sell_property(self):
         pass

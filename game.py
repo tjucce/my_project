@@ -32,7 +32,8 @@ class Game:
 
         if blue_command.lower() == "roll":
             if self.rolls > 1:
-                print(f"You can only roll the dice once, its {self.red_name}s turn now")
+                print(f"You can only roll the dice once")
+                print(f"Its {self.red_name}s turn now")
                 self.rolls = 1
                 self.turn = 2
             elif self.rolls == 1:
@@ -43,18 +44,26 @@ class Game:
                     self.rolls = 1
                 elif owner == 1:
                     self.rolls += 1
+                else:
+                    self.rolls += 1
                 print(self.blue_player.my_position())
+
         elif blue_command.lower() == "buy":
-            if self.blue_player.my_position() == 1 or 4 or 8 or 11:
-                enough = self.blue_player.buy_property(self.blue_player.my_position())
-                if enough == "yes":
-                    self.board.check_owner_blue_player(self.blue_player.my_position())
-                    self.turn = 2
-                    self.rolls = 1
-                elif enough == "no":
-                    print(f"Not enough money, its {self.red_name}s turn now")
-                    self.turn = 2
-                    self.rolls = 1
+            enough = self.blue_player.buy_property(self.blue_player.my_position())
+            if enough == "yes":
+                self.board.check_owner_blue_player(self.blue_player.my_position())
+                self.turn = 2
+                self.rolls = 1
+            elif enough == "no":
+                print(f"Not enough money, its {self.red_name}s turn now")
+                self.turn = 2
+                self.rolls = 1
+            elif enough == "no house":
+                self.board.check_owner_blue_player(self.blue_player.my_position())
+                print(f"Its {self.red_name}s turn now")
+                self.turn = 2
+                self.rolls = 1
+
         elif blue_command.lower() == "done":
             self.turn = 2
             self.rolls = 1
@@ -79,6 +88,8 @@ class Game:
                     self.turn = 1
                     self.rolls = 1
                 elif owner == 2:
+                    self.rolls += 1
+                else:
                     self.rolls += 1
                 print(self.red_player.my_position())
         elif red_command.lower() == "done":

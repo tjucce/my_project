@@ -1,14 +1,16 @@
 from terminal_color import color_print
+from blue_player import BluePlayer
 
 
 class Board:
     def __init__(self):
         self.board = [
-                [7, 5, 7, 7],
-                [5, 0, 0, 5],
+                [7, 1, 7, 7],
+                [4, 0, 0, 2],
                 [7, 0, 0, 7],
-                [7, 5, 7, 7]
+                [7, 3, 7, 7]
             ]
+        self.blue_player = BluePlayer
 
     def print_board(self):
         for row in self.board:
@@ -146,6 +148,7 @@ class Board:
             else:
                 self.board[0][1] = 5
                 print("Congratulations you bought the house")
+                self.blue_player.add_house_by_id()
         elif position == 2:
             print("No house to buy on this position")
         elif position == 3:
