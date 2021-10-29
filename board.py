@@ -1,5 +1,4 @@
 from terminal_color import color_print
-from blue_player import BluePlayer
 
 
 class Board:
@@ -147,7 +146,6 @@ class Board:
             else:
                 self.board[0][1] = 5
                 print("Congratulations you bought the house")
-                self.blue_player.add_house_by_id('id1')
         elif position == 2:
             print("No house to buy on this position")
         elif position == 3:

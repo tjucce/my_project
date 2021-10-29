@@ -52,6 +52,7 @@ class Game:
             enough = self.blue_player.buy_property(self.blue_player.my_position())
             if enough == "yes":
                 self.board.check_owner_blue_player(self.blue_player.my_position())
+                print(f"Its {self.red_name}s turn now")
                 self.turn = 2
                 self.rolls = 1
             elif enough == "no":
@@ -67,10 +68,12 @@ class Game:
         elif blue_command.lower() == "done":
             self.turn = 2
             self.rolls = 1
+        elif blue_command.lower() == "portfolio":
+            self.blue_player.show_portfolio()
         elif blue_command.lower() == "quit" or "exit":
             self.running = False
         else:
-            print("Input not valid")
+            pass
 
     def red_player_input(self):
         print(f"{self.red_name} what do you want to do? ")

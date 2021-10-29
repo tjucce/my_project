@@ -14,6 +14,7 @@ class BluePlayer:
         for house in houses:
             if house["id"] == house_id:
                 self.portfolio.append(house)
+                print(self.portfolio[0]["description"])
 
     def remove_house_by_id(self, house_id):
         remove_index = -1
@@ -36,25 +37,31 @@ class BluePlayer:
     def buy_property(self, house):
         if house == 1:
             if self.money >= 100:
-                self.money -= 100
+                self.money -= houses[0]["price"]
+                self.portfolio.append("A yellow house")
+                print(self.portfolio)
+                print(f"{self.money}$")
                 return "yes"
             else:
                 return "no"
         elif house == 4:
             if self.money >= 200:
-                self.money -= 200
+                self.money -= houses[1]["price"]
+                self.portfolio.append("A purple house")
                 return "yes"
             else:
                 return "no"
         elif house == 8:
             if self.money >= 300:
-                self.money -= 300
+                self.money -= houses[2]["price"]
+                self.portfolio.append("A green house")
                 return "yes"
             else:
                 return "no"
         elif house == 11:
             if self.money >= 400:
-                self.money -= 400
+                self.money -= houses[3]["price"]
+                self.portfolio.append("A black house")
                 return "yes"
             else:
                 return "no"
@@ -65,7 +72,10 @@ class BluePlayer:
         pass
 
     def show_portfolio(self):
-        pass
+        if len(self.portfolio) > 0:
+            print(self.portfolio)
+        else:
+            print("Your portfolio is empty")
 
     def my_position(self):
         return self.placement.position
