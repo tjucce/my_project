@@ -4,10 +4,10 @@ from terminal_color import color_print
 class Board:
     def __init__(self):
         self.board = [
-                [7, 6, 7, 7],
-                [6, 0, 0, 6],
+                [7, 1, 7, 7],
+                [4, 0, 0, 2],
                 [7, 0, 0, 7],
-                [7, 6, 7, 7]
+                [7, 3, 7, 7]
             ]
 
     def print_board(self):
@@ -37,7 +37,7 @@ class Board:
         elif placement == 1:
             print("You are at A2")
             if self.board[0][1] == 1:
-                print("A yellow house for sale")
+                print("A yellow house for sale\nPrice: 100$ Rent: 50$")
             elif self.board[0][1] == 5:
                 print("You are on your own house, do you want to sell?")
             elif self.board[0][1] == 6:
@@ -50,7 +50,7 @@ class Board:
         elif placement == 4:
             print("You are at B4")
             if self.board[1][3] == 2:
-                print("A purple house for sale")
+                print("A purple house for sale\nPrice: 200$ Rent: 100$")
             elif self.board[1][3] == 5:
                 print("You are on your own house, do you want to sell?")
             elif self.board[1][3] == 6:
@@ -65,7 +65,7 @@ class Board:
         elif placement == 8:
             print("You are at D2")
             if self.board[3][1] == 3:
-                print("A green house for sale")
+                print("A green house for sale\nPrice: 300$ Rent: 150$")
             elif self.board[3][1] == 5:
                 print("You are on your own house, do you want to sell?")
             elif self.board[3][1] == 6:
@@ -78,7 +78,7 @@ class Board:
         elif placement == 11:
             print("You are at B1")
             if self.board[1][0] == 4:
-                print("A black house for sale")
+                print("A black house for sale\nPrice: 400$ Rent: 200$")
             elif self.board[1][0] == 5:
                 print("You are on your own house, do you want to sell?")
             elif self.board[1][0] == 6:
@@ -91,7 +91,7 @@ class Board:
         elif placement == 1:
             print("You are at A2")
             if self.board[0][1] == 1:
-                print("A yellow house for sale")
+                print("A yellow house for sale\nPrice: 100$ Rent: 50$")
             elif self.board[0][1] == 6:
                 print("You are on your own house, do you want to sell?")
             elif self.board[0][1] == 5:
@@ -104,7 +104,7 @@ class Board:
         elif placement == 4:
             print("You are at B4")
             if self.board[1][3] == 2:
-                print("A purple house for sale")
+                print("A purple house for sale\nPrice: 200$ Rent: 100$")
             elif self.board[1][3] == 6:
                 print("You are on your own house, do you want to sell?")
             elif self.board[1][3] == 5:
@@ -119,7 +119,7 @@ class Board:
         elif placement == 8:
             print("You are at D2")
             if self.board[3][1] == 3:
-                print("A green house for sale")
+                print("A green house for sale\nPrice: 300$ Rent: 150$")
             elif self.board[3][1] == 6:
                 print("You are on your own house, do you want to sell?")
             elif self.board[3][1] == 5:
@@ -132,7 +132,7 @@ class Board:
         elif placement == 11:
             print("You are at B1")
             if self.board[1][0] == 4:
-                print("A black house for sale")
+                print("A black house for sale\nPrice: 400$ Rent: 200$")
             elif self.board[1][0] == 6:
                 print("You are on your own house, do you want to sell?")
             elif self.board[1][0] == 5:

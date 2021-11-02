@@ -3,6 +3,7 @@ from blue_placement import BluePlacement
 from red_placement import RedPlacement
 from blue_player import BluePlayer
 from red_player import RedPlayer
+from rules import rules
 
 
 class Game:
@@ -17,7 +18,8 @@ class Game:
         self.rolls = 1
 
     def run(self):
-        print(f"Welcome {self.blue_name} and {self.red_name} lets play monopoly")
+        print(f"Welcome {self.blue_name} and {self.red_name} lets play monopoly\n This is the rules")
+        print(rules)
         while self.running:
             if self.turn == 1:
                 self.board.print_board()
@@ -28,11 +30,12 @@ class Game:
 
     def blue_player_input(self):
         print(f"{self.blue_name} what do you want to do? ")
-        list_of_commands = ["roll", "buy", "sell", "done", "portfolio", "money", "quit", "exit"]
+        list_of_commands = ["roll", "buy", "sell", "done", "portfolio", "money", "rules", "quit", "exit"]
         blue_command = input("> ")
 
         if blue_command.lower() not in list_of_commands:
             print("invalid input, try again")
+
         elif blue_command.lower() == "roll":
             if self.rolls > 1:
                 print(f"You can only roll the dice once \nIts {self.red_name}s turn now")
@@ -44,7 +47,7 @@ class Game:
                 if owner == 2:
                     self.blue_player.pay_rent(self.blue_player.my_position())
                     self.red_player.collect_rent(self.blue_player.my_position())
-                    if self.blue_player.money <= 0:
+                    if self.blue_player.money < 0:
                         print(f"Game over, {self.blue_name} won the game")
                         self.running = False
                     self.turn = 2
@@ -53,7 +56,7 @@ class Game:
                     self.rolls += 1
                 else:
                     self.rolls += 1
-                print(self.blue_player.my_position())
+
         elif blue_command.lower() == "buy":
             enough = self.blue_player.buy_property(self.blue_player.my_position())
             if enough == "yes":
@@ -68,6 +71,7 @@ class Game:
             elif enough == "no house":
                 self.board.check_owner_blue_player(self.blue_player.my_position())
                 print(f"No house on this position")
+
         elif blue_command.lower() == "sell":
             position = self.blue_player.my_position()
             place = [1, 4, 8, 11]
@@ -76,24 +80,32 @@ class Game:
                 self.blue_player.sell_property(self.blue_player.my_position())
                 print(f"You sold your house, you now have {self.blue_player.money}$ left in your bank")
             else:
-                print("You cant sell, you need to be standing on your house to sell")
+                print("You can't sell, you need to be standing on your house to sell")
+
         elif blue_command.lower() == "done":
             self.turn = 2
             self.rolls = 1
+
         elif blue_command.lower() == "portfolio":
             self.blue_player.show_portfolio()
+
         elif blue_command.lower() == "money":
             print(f"You have {self.blue_player.money}$ in your bank")
+
+        elif blue_command.lower() == "rules":
+            print(rules)
+
         elif blue_command.lower() == "quit" or "exit":
             self.running = False
 
     def red_player_input(self):
         print(f"{self.red_name} what do you want to do? ")
-        list_of_commands = ["roll", "buy", "sell", "done", "portfolio", "money", "quit", "exit"]
+        list_of_commands = ["roll", "buy", "sell", "done", "portfolio", "money", "rules", "quit", "exit"]
         red_command = input("> ")
 
         if red_command.lower() not in list_of_commands:
             print("invalid input, try again")
+
         elif red_command.lower() == "roll":
             if self.rolls > 1:
                 print(f"You can only roll the dice once \nIts {self.blue_name}s turn now")
@@ -107,14 +119,14 @@ class Game:
                     self.blue_player.collect_rent(self.red_player.my_position())
                     self.turn = 1
                     self.rolls = 1
-                    if self.red_player.money <= 0:
+                    if self.red_player.money < 0:
                         print(f"Game over, {self.blue_name} won the game")
                         self.running = False
                 elif owner == 2:
                     self.rolls += 1
                 else:
                     self.rolls += 1
-                print(self.red_player.my_position())
+
         elif red_command.lower() == "buy":
             enough = self.red_player.buy_property(self.red_player.my_position())
             if enough == "yes":
@@ -129,6 +141,7 @@ class Game:
             elif enough == "no house":
                 self.board.check_owner_red_player(self.red_player.my_position())
                 print(f"No house on this position")
+
         elif red_command.lower() == "sell":
             position = self.red_player.my_position()
             place = [1, 4, 8, 11]
@@ -137,13 +150,20 @@ class Game:
                 self.red_player.sell_property(self.red_player.my_position())
                 print(f"You sold your house, you now have {self.red_player.money}$ left in your bank")
             else:
-                print("You cant sell, you need to be standing on your house to sell")
+                print("You can't sell, you need to be standing on your house to sell")
+
         elif red_command.lower() == "done":
             self.turn = 1
             self.rolls = 1
+
         elif red_command.lower() == "portfolio":
             self.red_player.show_portfolio()
+
         elif red_command.lower() == "money":
             print(f"You have {self.red_player.money}$ in your bank")
+
+        elif red_command.lower() == "rules":
+            print(rules)
+
         elif red_command.lower() == "quit" or "exit":
             self.running = False
