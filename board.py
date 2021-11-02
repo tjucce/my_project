@@ -4,10 +4,10 @@ from terminal_color import color_print
 class Board:
     def __init__(self):
         self.board = [
-                [7, 1, 7, 7],
-                [4, 0, 0, 2],
+                [7, 6, 7, 7],
+                [6, 0, 0, 6],
                 [7, 0, 0, 7],
-                [7, 3, 7, 7]
+                [7, 6, 7, 7]
             ]
 
     def print_board(self):
@@ -41,7 +41,7 @@ class Board:
             elif self.board[0][1] == 5:
                 print("You are on your own house, do you want to sell?")
             elif self.board[0][1] == 6:
-                print("You are on red players house, time to pay")
+                print("You are at a red house, time to pay")
                 return 2
         elif placement == 2:
             print("You are at A3")
@@ -54,7 +54,7 @@ class Board:
             elif self.board[1][3] == 5:
                 print("You are on your own house, do you want to sell?")
             elif self.board[1][3] == 6:
-                print("You are on red players house, time to pay")
+                print("You are at a red house, time to pay")
                 return 2
         elif placement == 5:
             print("You are at C4")
@@ -69,7 +69,7 @@ class Board:
             elif self.board[3][1] == 5:
                 print("You are on your own house, do you want to sell?")
             elif self.board[3][1] == 6:
-                print("You are on red players house, time to pay")
+                print("You are at a red house, time to pay")
                 return 2
         elif placement == 9:
             print("You are at D1")
@@ -82,7 +82,7 @@ class Board:
             elif self.board[1][0] == 5:
                 print("You are on your own house, do you want to sell?")
             elif self.board[1][0] == 6:
-                print("You are on red players house, time to pay")
+                print("You are at a red house, time to pay")
                 return 2
 
     def current_placement_red_player(self, placement):
@@ -95,7 +95,7 @@ class Board:
             elif self.board[0][1] == 6:
                 print("You are on your own house, do you want to sell?")
             elif self.board[0][1] == 5:
-                print("You are on blue players house, time to pay")
+                print("You are at a blue house, time to pay")
                 return 1
         elif placement == 2:
             print("You are at A3")
@@ -108,7 +108,7 @@ class Board:
             elif self.board[1][3] == 6:
                 print("You are on your own house, do you want to sell?")
             elif self.board[1][3] == 5:
-                print("You are on blue players house, time to pay")
+                print("You are at a blue house, time to pay")
                 return 1
         elif placement == 5:
             print("You are at C4")
@@ -123,7 +123,7 @@ class Board:
             elif self.board[3][1] == 6:
                 print("You are on your own house, do you want to sell?")
             elif self.board[3][1] == 5:
-                print("You are on blue players house, time to pay")
+                print("You are at a blue house, time to pay")
                 return 1
         elif placement == 9:
             print("You are at D1")
@@ -136,7 +136,7 @@ class Board:
             elif self.board[1][0] == 6:
                 print("You are on your own house, do you want to sell?")
             elif self.board[1][0] == 5:
-                print("You are on blue players house, time to pay")
+                print("You are at a blue house, time to pay")
                 return 1
 
     def check_owner_blue_player(self, position):
@@ -218,3 +218,13 @@ class Board:
             else:
                 self.board[1][0] = 6
                 print("Congratulations you bought the house")
+
+    def sold_house(self, position):
+        if position == 1:
+            self.board[0][1] = 1
+        elif position == 4:
+            self.board[1][3] = 2
+        elif position == 8:
+            self.board[3][1] = 3
+        elif position == 11:
+            self.board[1][0] = 4

@@ -29,36 +29,34 @@ class BluePlayer:
         print(f"You rolled a {dice}")
         self.placement.position += dice
         if self.placement.position >= 12:
-            self.money += 100
-            print("You have walked around the hole block, you get 100$")
+            self.money += 50
+            print("You have walked around the hole block, you get 50$")
             print(f"You now have {self.money}$")
             self.placement.position -= 12
 
-    def buy_property(self, house):
-        if house == 1:
+    def buy_property(self, position):
+        if position == 1:
             if self.money >= 100:
                 self.money -= houses[0]["price"]
                 self.portfolio.append("A yellow house")
-                print(self.portfolio)
-                print(f"{self.money}$")
                 return "yes"
             else:
                 return "no"
-        elif house == 4:
+        elif position == 4:
             if self.money >= 200:
                 self.money -= houses[1]["price"]
                 self.portfolio.append("A purple house")
                 return "yes"
             else:
                 return "no"
-        elif house == 8:
+        elif position == 8:
             if self.money >= 300:
                 self.money -= houses[2]["price"]
                 self.portfolio.append("A green house")
                 return "yes"
             else:
                 return "no"
-        elif house == 11:
+        elif position == 11:
             if self.money >= 400:
                 self.money -= houses[3]["price"]
                 self.portfolio.append("A black house")
@@ -68,8 +66,19 @@ class BluePlayer:
         else:
             return "no house"
 
-    def sell_property(self):
-        pass
+    def sell_property(self, position):
+        if position == 1:
+            self.money += houses[0]["price"]
+            self.portfolio.remove("A yellow house")
+        elif position == 4:
+            self.money += houses[1]["price"]
+            self.portfolio.remove("A purple house")
+        elif position == 8:
+            self.money += houses[2]["price"]
+            self.portfolio.remove("A green house")
+        elif position == 11:
+            self.money += houses[3]["price"]
+            self.portfolio.remove("A black house")
 
     def show_portfolio(self):
         if len(self.portfolio) > 0:
@@ -79,3 +88,27 @@ class BluePlayer:
 
     def my_position(self):
         return self.placement.position
+
+    def pay_rent(self, position):
+        if position == 1:
+            self.money -= houses[0]["rent"]
+            print("You just payed 50$ in rent")
+        elif position == 4:
+            self.money -= houses[1]["rent"]
+            print("You just payed 100$ in rent")
+        elif position == 8:
+            self.money -= houses[2]["rent"]
+            print("You just payed 150$ in rent")
+        elif position == 11:
+            self.money -= houses[3]["rent"]
+            print("You just payed 200$ in rent")
+
+    def collect_rent(self, position):
+        if position == 1:
+            self.money += houses[0]["rent"]
+        elif position == 4:
+            self.money += houses[1]["rent"]
+        elif position == 8:
+            self.money += houses[2]["rent"]
+        elif position == 11:
+            self.money += houses[3]["rent"]
