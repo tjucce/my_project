@@ -1,6 +1,6 @@
 from board import Board
-from blue_placement import BluePlacement
-from red_placement import RedPlacement
+from blue_placement import BluePosition
+from red_placement import RedPosition
 from blue_player import BluePlayer
 from red_player import RedPlayer
 from rules import rules
@@ -8,8 +8,8 @@ from rules import rules
 
 class Game:
     def __init__(self):
-        self.blue_player = BluePlayer(BluePlacement(0))
-        self.red_player = RedPlayer(RedPlacement(0))
+        self.blue_player = BluePlayer(BluePosition(0))
+        self.red_player = RedPlayer(RedPosition(0))
         self.running = True
         self.blue_name = input("Blue player what is you name: ")
         self.red_name = input("Red player what is you name: ")
