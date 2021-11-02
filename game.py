@@ -34,7 +34,7 @@ class Game:
         blue_command = input("> ")
 
         if blue_command.lower() not in list_of_commands:
-            print("invalid input, try again")
+            print("Invalid input, try again")
 
         elif blue_command.lower() == "roll":
             if self.rolls > 1:
@@ -58,27 +58,32 @@ class Game:
                     self.rolls += 1
 
         elif blue_command.lower() == "buy":
-            enough = self.blue_player.buy_property(self.blue_player.my_position())
-            if enough == "yes":
-                self.board.check_owner_blue_player(self.blue_player.my_position())
-                print(f"You now have {self.blue_player.money}$ left in your bank \nIts {self.red_name}s turn now")
-                self.turn = 2
-                self.rolls = 1
-            elif enough == "no":
-                print(f"Not enough money \nIts {self.red_name}s turn now")
-                self.turn = 2
-                self.rolls = 1
-            elif enough == "no house":
-                self.board.check_owner_blue_player(self.blue_player.my_position())
-                print(f"No house on this position")
+            owner = self.board.no_owner(self.blue_player.my_position())
+            if owner:
+                enough = self.blue_player.buy_property(self.blue_player.my_position())
+                if enough == "yes":
+                    self.board.check_owner_blue_player(self.blue_player.my_position())
+                    print(f"You now have {self.blue_player.money}$ left in your bank \nIts {self.red_name}s turn now")
+                    self.turn = 2
+                    self.rolls = 1
+                elif enough == "no":
+                    print(f"Not enough money \nIts {self.red_name}s turn now")
+                    self.turn = 2
+                    self.rolls = 1
+                elif enough == "no house":
+                    self.board.check_owner_blue_player(self.blue_player.my_position())
+                    print(f"No house on this position")
+            else:
+                print(f"{self.red_name} already owns this house")
 
         elif blue_command.lower() == "sell":
             position = self.blue_player.my_position()
             place = [1, 4, 8, 11]
             if position in place:
                 self.board.sold_house(self.blue_player.my_position())
-                self.blue_player.sell_property(self.blue_player.my_position())
-                print(f"You sold your house, you now have {self.blue_player.money}$ left in your bank")
+                valid = self.blue_player.sell_property(self.blue_player.my_position())
+                if valid == 1:
+                    print(f"You sold your house, you now have {self.blue_player.money}$ left in your bank")
             else:
                 print("You can't sell, you need to be standing on your house to sell")
 
@@ -104,7 +109,7 @@ class Game:
         red_command = input("> ")
 
         if red_command.lower() not in list_of_commands:
-            print("invalid input, try again")
+            print("Invalid input, try again")
 
         elif red_command.lower() == "roll":
             if self.rolls > 1:
@@ -128,27 +133,32 @@ class Game:
                     self.rolls += 1
 
         elif red_command.lower() == "buy":
-            enough = self.red_player.buy_property(self.red_player.my_position())
-            if enough == "yes":
-                self.board.check_owner_red_player(self.red_player.my_position())
-                print(f"You now have {self.red_player.money}$ left in your bank \nIts {self.blue_name}s turn now")
-                self.turn = 1
-                self.rolls = 1
-            elif enough == "no":
-                print(f"Not enough money \nIts {self.blue_name}s turn now")
-                self.turn = 1
-                self.rolls = 1
-            elif enough == "no house":
-                self.board.check_owner_red_player(self.red_player.my_position())
-                print(f"No house on this position")
+            owner = self.board.no_owner(self.red_player.my_position())
+            if owner:
+                enough = self.red_player.buy_property(self.red_player.my_position())
+                if enough == "yes":
+                    self.board.check_owner_red_player(self.red_player.my_position())
+                    print(f"You now have {self.red_player.money}$ left in your bank \nIts {self.blue_name}s turn now")
+                    self.turn = 1
+                    self.rolls = 1
+                elif enough == "no":
+                    print(f"Not enough money \nIts {self.blue_name}s turn now")
+                    self.turn = 1
+                    self.rolls = 1
+                elif enough == "no house":
+                    self.board.check_owner_red_player(self.red_player.my_position())
+                    print(f"No house on this position")
+            else:
+                print(f"{self.blue_name} already owns this house")
 
         elif red_command.lower() == "sell":
             position = self.red_player.my_position()
             place = [1, 4, 8, 11]
             if position in place:
                 self.board.sold_house(self.red_player.my_position())
-                self.red_player.sell_property(self.red_player.my_position())
-                print(f"You sold your house, you now have {self.red_player.money}$ left in your bank")
+                valid = self.red_player.sell_property(self.red_player.my_position())
+                if valid == 1:
+                    print(f"You sold your house, you now have {self.red_player.money}$ left in your bank")
             else:
                 print("You can't sell, you need to be standing on your house to sell")
 

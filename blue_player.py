@@ -52,17 +52,33 @@ class BluePlayer:
 
     def sell_property(self, position):
         if position == 1:
-            self.money += houses[0]["price"]
-            self.portfolio.remove("A yellow house")
+            if "A yellow house" in self.portfolio:
+                self.money += houses[0]["price"]
+                self.portfolio.remove("A yellow house")
+                return 1
+            else:
+                print("You need to own the house before you can sell it")
         elif position == 4:
-            self.money += houses[1]["price"]
-            self.portfolio.remove("A purple house")
+            if "A purple house" in self.portfolio:
+                self.money += houses[1]["price"]
+                self.portfolio.remove("A purple house")
+                return 1
+            else:
+                print("You need to own the house before you can sell it")
         elif position == 8:
-            self.money += houses[2]["price"]
-            self.portfolio.remove("A green house")
+            if "A green house" in self.portfolio:
+                self.money += houses[2]["price"]
+                self.portfolio.remove("A green house")
+                return 1
+            else:
+                print("You need to own the house before you can sell it")
         elif position == 11:
-            self.money += houses[3]["price"]
-            self.portfolio.remove("A black house")
+            if "A black house" in self.portfolio:
+                self.money += houses[3]["price"]
+                self.portfolio.remove("A black house")
+                return 1
+            else:
+                print("You need to own the house before you can sell it")
 
     def show_portfolio(self):
         if len(self.portfolio) > 0:

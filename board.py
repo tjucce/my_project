@@ -31,6 +31,20 @@ class Board:
                 color_print(color, "⬜", end=" ")
             print()
 
+    def no_owner(self, placement):
+        if placement == 0:
+            if self.board[0][1] == 0:
+                return True
+        if placement == 0:
+            if self.board[1][3] == 0:
+                return True
+        if placement == 0:
+            if self.board[3][1] == 0:
+                return True
+        if placement == 0:
+            if self.board[1][0] == 0:
+                return True
+
     def current_placement_blue_player(self, placement):
         if placement == 0:
             print("You are at A1")
@@ -143,6 +157,8 @@ class Board:
         if position == 1:
             if self.board[0][1] == 5:
                 print("You already own this house")
+            elif self.board[0][1] == 6:
+                print("This house is not for sale")
             else:
                 self.board[0][1] = 5
                 print("Congratulations you bought the house")
@@ -153,6 +169,8 @@ class Board:
         elif position == 4:
             if self.board[1][3] == 5:
                 print("You already own this house")
+            elif self.board[1][3] == 6:
+                print("This house is not for sale")
             else:
                 self.board[1][3] = 5
                 print("Congratulations you bought the house")
@@ -165,6 +183,8 @@ class Board:
         elif position == 8:
             if self.board[3][1] == 5:
                 print("You already own this house")
+            elif self.board[3][1] == 6:
+                print("This house is not for sale")
             else:
                 self.board[3][1] = 5
                 print("Congratulations you bought the house")
@@ -175,6 +195,8 @@ class Board:
         elif position == 11:
             if self.board[1][0] == 5:
                 print("You already own this house")
+            elif self.board[1][0] == 6:
+                print("This house is not for sale")
             else:
                 self.board[1][0] = 5
                 print("Congratulations you bought the house")
@@ -183,9 +205,12 @@ class Board:
         if position == 1:
             if self.board[0][1] == 6:
                 print("You already own this house")
+            elif self.board[0][1] == 5:
+                print("This house is not for sale")
             else:
                 self.board[0][1] = 6
                 print("Congratulations you bought the house")
+                return 1
         elif position == 2:
             print("No house to buy on this position")
         elif position == 3:
@@ -193,6 +218,8 @@ class Board:
         elif position == 4:
             if self.board[1][3] == 6:
                 print("You already own this house")
+            elif self.board[1][3] == 5:
+                print("This house is not for sale")
             else:
                 self.board[1][3] = 6
                 print("Congratulations you bought the house")
@@ -205,6 +232,8 @@ class Board:
         elif position == 8:
             if self.board[3][1] == 6:
                 print("You already own this house")
+            elif self.board[3][1] == 5:
+                print("This house is not for sale")
             else:
                 self.board[3][1] = 6
                 print("Congratulations you bought the house")
@@ -215,6 +244,8 @@ class Board:
         elif position == 11:
             if self.board[1][0] == 6:
                 print("You already own this house")
+            elif self.board[1][0] == 5:
+                print("This house is not for sale")
             else:
                 self.board[1][0] = 6
                 print("Congratulations you bought the house")
