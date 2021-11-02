@@ -1,5 +1,6 @@
 import random
 from houses import houses
+from board import Board
 
 
 class RedPlayer:
@@ -7,6 +8,7 @@ class RedPlayer:
         self.placement = placement
         self.portfolio = []
         self.money = 200
+        self.board = Board()
 
     def roll_dice(self):
         dice = random.choice([1, 2, 3, 4, 5, 6])
@@ -20,33 +22,49 @@ class RedPlayer:
 
     def buy_property(self, position):
         if position == 1:
-            if self.money >= 100:
-                self.money -= houses[0]["price"]
-                self.portfolio.append("A yellow house")
-                return "yes"
+            owner = self.board.no_owner(1)
+            if owner == 1:
+                if self.money >= 100:
+                    self.money -= houses[0]["price"]
+                    self.portfolio.append("A yellow house")
+                    return "yes"
+                else:
+                    return "no"
             else:
-                return "no"
+                return "occupied"
         elif position == 4:
-            if self.money >= 200:
-                self.money -= houses[1]["price"]
-                self.portfolio.append("A purple house")
-                return "yes"
+            owner = self.board.no_owner(4)
+            if owner == 1:
+                if self.money >= 200:
+                    self.money -= houses[1]["price"]
+                    self.portfolio.append("A purple house")
+                    return "yes"
+                else:
+                    return "no"
             else:
-                return "no"
+                return "occupied"
         elif position == 8:
-            if self.money >= 300:
-                self.money -= houses[2]["price"]
-                self.portfolio.append("A green house")
-                return "yes"
+            owner = self.board.no_owner(8)
+            if owner == 1:
+                if self.money >= 300:
+                    self.money -= houses[2]["price"]
+                    self.portfolio.append("A green house")
+                    return "yes"
+                else:
+                    return "no"
             else:
-                return "no"
+                return "occupied"
         elif position == 11:
-            if self.money >= 400:
-                self.money -= houses[3]["price"]
-                self.portfolio.append("A black house")
-                return "yes"
+            owner = self.board.no_owner(11)
+            if owner == 1:
+                if self.money >= 400:
+                    self.money -= houses[3]["price"]
+                    self.portfolio.append("A black house")
+                    return "yes"
+                else:
+                    return "no"
             else:
-                return "no"
+                return "occupied"
         else:
             return "no house"
 

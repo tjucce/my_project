@@ -34,16 +34,16 @@ class Board:
     def no_owner(self, placement):
         if placement == 0:
             if self.board[0][1] == 0:
-                return True
+                return 1
         if placement == 0:
             if self.board[1][3] == 0:
-                return True
+                return 1
         if placement == 0:
             if self.board[3][1] == 0:
-                return True
+                return 1
         if placement == 0:
             if self.board[1][0] == 0:
-                return True
+                return 1
 
     def current_placement_blue_player(self, placement):
         if placement == 0:
