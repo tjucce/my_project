@@ -7,7 +7,7 @@ class BluePlayer:
     def __init__(self, placement):
         self.placement = placement
         self.portfolio = []
-        self.money = 200
+        self.money = 400
         self.board = Board()
 
     def roll_dice(self):
@@ -23,75 +23,87 @@ class BluePlayer:
     def buy_property(self, position):
         if position == 1:
             owner = self.board.no_owner(1)
-            if owner == 1:
+            if owner == "yes":
                 if self.money >= 100:
                     self.money -= houses[0]["price"]
                     self.portfolio.append("A yellow house")
                     return "yes"
                 else:
                     return "no"
-            else:
+            elif owner == 1:
+                print("You already own this house")
+            elif owner == 2:
                 return "occupied"
         elif position == 4:
             owner = self.board.no_owner(4)
-            if owner == 1:
+            if owner == "yes":
                 if self.money >= 200:
                     self.money -= houses[1]["price"]
                     self.portfolio.append("A purple house")
                     return "yes"
                 else:
                     return "no"
-            else:
+            elif owner == 1:
+                print("You already own this house")
+            elif owner == 2:
                 return "occupied"
         elif position == 8:
             owner = self.board.no_owner(8)
-            if owner == 1:
+            if owner == "yes":
                 if self.money >= 300:
                     self.money -= houses[2]["price"]
                     self.portfolio.append("A green house")
                     return "yes"
                 else:
                     return "no"
-            else:
+            elif owner == 1:
+                print("You already own this house")
+            elif owner == 2:
                 return "occupied"
         elif position == 11:
             owner = self.board.no_owner(11)
-            if owner == 1:
+            if owner == "yes":
                 if self.money >= 400:
                     self.money -= houses[3]["price"]
                     self.portfolio.append("A black house")
                     return "yes"
                 else:
                     return "no"
-            else:
+            elif owner == 1:
+                print("You already own this house")
+            elif owner == 2:
                 return "occupied"
         else:
             return "no house"
 
     def sell_property(self, position):
         if position == 1:
-            if "A yellow house" in self.portfolio:
+            owner = self.board.no_owner(1)
+            if owner == 1:
                 self.money += houses[0]["price"]
                 self.portfolio.remove("A yellow house")
                 return 1
             else:
                 print("You need to own the house before you can sell it")
         elif position == 4:
-            if "A purple house" in self.portfolio:
+            owner = self.board.no_owner(4)
+            if owner == 1:
                 self.money += houses[1]["price"]
                 self.portfolio.remove("A purple house")
                 return 1
             else:
                 print("You need to own the house before you can sell it")
         elif position == 8:
-            if "A green house" in self.portfolio:
+            owner = self.board.no_owner(8)
+            if owner == 1:
                 self.money += houses[2]["price"]
                 self.portfolio.remove("A green house")
                 return 1
             else:
                 print("You need to own the house before you can sell it")
         elif position == 11:
-            if "A black house" in self.portfolio:
+            owner = self.board.no_owner(11)
+            if owner == 1:
                 self.money += houses[3]["price"]
                 self.portfolio.remove("A black house")
                 return 1

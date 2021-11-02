@@ -23,7 +23,7 @@ class RedPlayer:
     def buy_property(self, position):
         if position == 1:
             owner = self.board.no_owner(1)
-            if owner == 1:
+            if owner == "yes":
                 if self.money >= 100:
                     self.money -= houses[0]["price"]
                     self.portfolio.append("A yellow house")
@@ -34,7 +34,7 @@ class RedPlayer:
                 return "occupied"
         elif position == 4:
             owner = self.board.no_owner(4)
-            if owner == 1:
+            if owner == "yes":
                 if self.money >= 200:
                     self.money -= houses[1]["price"]
                     self.portfolio.append("A purple house")
@@ -45,7 +45,7 @@ class RedPlayer:
                 return "occupied"
         elif position == 8:
             owner = self.board.no_owner(8)
-            if owner == 1:
+            if owner == "yes":
                 if self.money >= 300:
                     self.money -= houses[2]["price"]
                     self.portfolio.append("A green house")
@@ -56,7 +56,7 @@ class RedPlayer:
                 return "occupied"
         elif position == 11:
             owner = self.board.no_owner(11)
-            if owner == 1:
+            if owner == "yes":
                 if self.money >= 400:
                     self.money -= houses[3]["price"]
                     self.portfolio.append("A black house")

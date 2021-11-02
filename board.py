@@ -32,18 +32,35 @@ class Board:
             print()
 
     def no_owner(self, placement):
-        if placement == 0:
-            if self.board[0][1] == 0:
+        if placement == 1:
+            if self.board[0][1] == 1:
+                return "yes"
+            elif self.board[0][1] == 5:
                 return 1
-        if placement == 0:
-            if self.board[1][3] == 0:
+            elif self.board[0][1] == 6:
+                return 2
+        if placement == 4:
+            if self.board[1][3] == 2:
+                return "yes"
+            elif self.board[1][3] == 5:
                 return 1
-        if placement == 0:
-            if self.board[3][1] == 0:
+            elif self.board[1][3] == 6:
+                return 2
+        if placement == 8:
+            if self.board[3][1] == 3:
+                return "yes"
+            elif self.board[3][1] == 5:
                 return 1
-        if placement == 0:
-            if self.board[1][0] == 0:
+            elif self.board[3][1] == 6:
+                return 2
+        if placement == 11:
+            if self.board[1][0] == 4:
+                return "yes"
+            elif self.board[1][0] == 5:
                 return 1
+            elif self.board[1][0] == 6:
+                return 2
+
 
     def current_placement_blue_player(self, placement):
         if placement == 0:
