@@ -100,3 +100,5 @@ class BluePlayer:
             self.money += houses[2]["rent"]
         elif position == 11:
             self.money += houses[3]["rent"]
+
+
