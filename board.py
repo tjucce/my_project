@@ -4,10 +4,10 @@ from terminal_color import color_print
 class Board:
     def __init__(self):
         self.board = [
-                [7, 5, 7, 7],
-                [5, 0, 0, 5],
+                [7, 1, 7, 7],
+                [4, 0, 0, 2],
                 [7, 0, 0, 7],
-                [7, 5, 7, 7]
+                [7, 3, 7, 7]
             ]
 
     def print_board(self):
@@ -242,11 +242,11 @@ class Board:
             elif self.board[3][1] == 6:
                 return "red"
         elif position == 11:
-            if self.board[0][1] == 4:
+            if self.board[1][0] == 4:
                 return "yes"
-            elif self.board[0][1] == 5:
+            elif self.board[1][0] == 5:
                 return "blue"
-            elif self.board[0][1] == 6:
+            elif self.board[1][0] == 6:
                 return "red"
         else:
             return "yes"

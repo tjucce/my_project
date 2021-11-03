@@ -11,13 +11,15 @@ class Game:
         self.blue_player = BluePlayer(BluePosition(0))
         self.red_player = RedPlayer(RedPosition(0))
         self.running = True
-        self.blue_name = input("Blue player what is you name: ")
-        self.red_name = input("Red player what is you name: ")
+        self.blue_name = ""
+        self.red_name = ""
         self.board = Board()
         self.turn = 1
         self.rolls = 1
 
     def run(self):
+        self.blue_name = input("Blue player what is you name: ")
+        self.red_name = input("red player what is you name: ")
         print(f"Welcome {self.blue_name} and {self.red_name} lets play monopoly\n This is the rules")
         print(rules)
         while self.running:
