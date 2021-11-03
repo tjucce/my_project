@@ -58,7 +58,7 @@ class Game:
                     self.rolls += 1
 
         elif blue_command.lower() == "buy":
-            if self.board.owner(self.red_player.my_position()) == "yes":
+            if self.board.owner(self.blue_player.my_position()) == "yes":
                 enough = self.blue_player.buy_property(self.blue_player.my_position())
                 if enough == "yes":
                     self.board.check_owner_blue_player(self.blue_player.my_position())
@@ -69,16 +69,16 @@ class Game:
                     self.board.check_owner_blue_player(self.blue_player.my_position())
             elif self.board.owner(self.blue_player.my_position()) == "blue":
                 print("You already own this house")
-            elif self.board.owner(self.blue_player.my_position()) == "blue":
+            elif self.board.owner(self.blue_player.my_position()) == "red":
                 print(f"{self.red_name} already owns this house")
 
         elif blue_command.lower() == "sell":
             position = self.blue_player.my_position()
             place = [1, 4, 8, 11]
             if position in place:
-                if self.board.owner(self.blue_player.my_position()) == "blue":
-                    self.board.sold_house(self.blue_player.my_position())
-                    self.blue_player.sell_property(self.blue_player.my_position())
+                if self.board.owner(position) == "blue":
+                    self.board.sold_house(position)
+                    self.blue_player.sell_property(position)
                 else:
                     print("You need to own the house before you can sell it")
             else:
@@ -148,9 +148,9 @@ class Game:
             position = self.red_player.my_position()
             place = [1, 4, 8, 11]
             if position in place:
-                if self.board.owner(self.red_player.my_position()) == "red":
-                    self.board.sold_house(self.red_player.my_position())
-                    self.red_player.sell_property(self.red_player.my_position())
+                if self.board.owner(position) == "red":
+                    self.board.sold_house(position)
+                    self.red_player.sell_property(position)
                 else:
                     print("You need to own the house before you can sell it")
             else:

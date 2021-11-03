@@ -4,10 +4,10 @@ from terminal_color import color_print
 class Board:
     def __init__(self):
         self.board = [
-                [7, 1, 7, 7],
-                [4, 0, 0, 2],
+                [7, 5, 7, 7],
+                [5, 0, 0, 5],
                 [7, 0, 0, 7],
-                [7, 3, 7, 7]
+                [7, 5, 7, 7]
             ]
 
     def print_board(self):
