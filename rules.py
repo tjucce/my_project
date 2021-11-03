@@ -7,7 +7,7 @@ rules = "      RULES\n" \
         "D1 ⬜  ⬜  ⬜  ⬜ D4\n" \
         "      D2  D3\n" \
         "Both players start at A1\n" \
-        "Both player also starts with 200$ each\n" \
+        "Both player starts with 200$ each\n" \
         "You lose if you land on the other players house and can't afford to pay the rent\n" \
         "These are the commands you can use\n" \
         "Roll: Rolls the dice\n" \
@@ -18,4 +18,3 @@ rules = "      RULES\n" \
         "Money: Shows how much money you have in the bank\n" \
         "Rules: Prints the rules of the game\n" \
         "Quit: or Exit: Closes down the game\n"
-
