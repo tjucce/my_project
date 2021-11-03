@@ -72,7 +72,7 @@ class BluePlayer:
         if len(self.portfolio) > 0:
             print(self.portfolio)
         else:
-            print("Your portfolio is empty")
+            print("You have no house in your portfolio")
 
     def my_position(self):
         return self.placement.position

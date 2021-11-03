@@ -48,7 +48,7 @@ class Game:
                     self.blue_player.pay_rent(self.blue_player.my_position())
                     self.red_player.collect_rent(self.blue_player.my_position())
                     if self.blue_player.money < 0:
-                        print(f"Game over, {self.blue_name} won the game")
+                        print(f"Game over, {self.blue_name} won")
                         self.running = False
                     self.turn = 2
                     self.rolls = 1
@@ -122,7 +122,7 @@ class Game:
                     self.turn = 1
                     self.rolls = 1
                     if self.red_player.money < 0:
-                        print(f"Game over, {self.blue_name} won the game")
+                        print(f"Game over, {self.blue_name} won")
                         self.running = False
                 elif owner == 2:
                     self.rolls += 1
