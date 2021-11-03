@@ -145,7 +145,7 @@ class Board:
                 print("You already own this house")
             else:
                 self.board[0][1] = 5
-                print("Congratulations you bought the house")
+                print("Congratulations you bought the yellow house")
         elif position == 2:
             print("No house to buy on this position")
         elif position == 3:
@@ -155,7 +155,7 @@ class Board:
                 print("You already own this house")
             else:
                 self.board[1][3] = 5
-                print("Congratulations you bought the house")
+                print("Congratulations you bought the purple house")
         elif position == 5:
             print("No house to buy on this position")
         elif position == 6:
@@ -167,7 +167,7 @@ class Board:
                 print("You already own this house")
             else:
                 self.board[3][1] = 5
-                print("Congratulations you bought the house")
+                print("Congratulations you bought the green house")
         elif position == 9:
             print("No house to buy on this position")
         elif position == 10:
@@ -177,7 +177,7 @@ class Board:
                 print("You already own this house")
             else:
                 self.board[1][0] = 5
-                print("Congratulations you bought the house")
+                print("Congratulations you bought the black house")
 
     def check_owner_red_player(self, position):
         if position == 1:
