@@ -8,7 +8,7 @@ class MyTestCase(unittest.TestCase):
         game.blue_player.placement = 1
         position = game.blue_player.placement
         game.blue_player.buy_property(position)
-        print(game.board.check_owner_blue_player(position))
+        game.board.check_owner_blue_player(position)
         self.assertEqual(game.blue_player.portfolio, ["A yellow house"])  # add assertion here
 
     def test_buy_to_expensive(self):
@@ -17,6 +17,24 @@ class MyTestCase(unittest.TestCase):
         position = game.blue_player.placement
         game.blue_player.buy_property(position)
         self.assertEqual(game.blue_player.portfolio, [])  # add assertion here
+
+    def test_buy_no_house(self):
+        game = Game()
+        game.blue_player.placement = 2
+        position = game.blue_player.placement
+        game.blue_player.buy_property(position)
+        game.board.check_owner_blue_player(position)
+        self.assertEqual(game.blue_player.portfolio, [])  # add assertion here
+
+    def test_money_update(self):
+        game = Game()
+        game.blue_player.placement = 4
+        position = game.blue_player.placement
+        print(f"Money before buy {game.blue_player.money}$")
+        game.blue_player.buy_property(position)
+        game.board.check_owner_blue_player(position)
+        print(f"Money after buy {game.blue_player.money}$")
+        self.assertEqual(game.blue_player.money, 0)  # add assertion here
 
 
 if __name__ == '__main__':
