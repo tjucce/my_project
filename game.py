@@ -8,8 +8,8 @@ from rules import rules
 
 class Game:
     def __init__(self):
-        self.blue_player = BluePlayer(BluePosition(1))
-        self.red_player = RedPlayer(RedPosition(1))
+        self.blue_player = BluePlayer(BluePosition(0))
+        self.red_player = RedPlayer(RedPosition(0))
         self.running = True
         self.blue_name = ""
         self.red_name = ""
