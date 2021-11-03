@@ -171,4 +171,3 @@ class Game:
 
         elif red_command.lower() == "quit" or "exit":
             self.running = False
-
