@@ -25,28 +25,28 @@ class RedPlayer:
                 self.portfolio.append("A yellow house")
                 return "yes"
             else:
-                return "no"
+                print("You don't have enough money")
         elif position == 4:
             if self.money >= 200:
                 self.money -= houses[1]["price"]
                 self.portfolio.append("A purple house")
                 return "yes"
             else:
-                return "no"
+                print("You don't have enough money")
         elif position == 8:
             if self.money >= 300:
                 self.money -= houses[2]["price"]
                 self.portfolio.append("A green house")
                 return "yes"
             else:
-                return "no"
+                print("You don't have enough money")
         elif position == 11:
             if self.money >= 400:
                 self.money -= houses[3]["price"]
                 self.portfolio.append("A black house")
                 return "yes"
             else:
-                return "no"
+                print("You don't have enough money")
         else:
             return "no house"
 
@@ -54,15 +54,19 @@ class RedPlayer:
         if position == 1:
             self.money += houses[0]["price"]
             self.portfolio.remove("A yellow house")
+            print(f"You sold your house, you now have {self.money}$ left in your bank")
         elif position == 4:
             self.money += houses[1]["price"]
             self.portfolio.remove("A purple house")
+            print(f"You sold your house, you now have {self.money}$ left in your bank")
         elif position == 8:
             self.money += houses[2]["price"]
             self.portfolio.remove("A green house")
+            print(f"You sold your house, you now have {self.money}$ left in your bank")
         elif position == 11:
             self.money += houses[3]["price"]
             self.portfolio.remove("A black house")
+            print(f"You sold your house, you now have {self.money}$ left in your bank")
 
     def show_portfolio(self):
         if len(self.portfolio) > 0:

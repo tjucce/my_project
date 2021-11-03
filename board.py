@@ -219,6 +219,38 @@ class Board:
                 self.board[1][0] = 6
                 print("Congratulations you bought the house")
 
+    def owner(self, position):
+        if position == 1:
+            if self.board[0][1] == 1:
+                return "yes"
+            elif self.board[0][1] == 5:
+                return "blue"
+            elif self.board[0][1] == 6:
+                return "red"
+        if position == 4:
+            if self.board[1][3] == 2:
+                return "yes"
+            elif self.board[1][3] == 5:
+                return "blue"
+            elif self.board[1][3] == 6:
+                return "red"
+        elif position == 8:
+            if self.board[3][1] == 3:
+                return "yes"
+            elif self.board[3][1] == 5:
+                return "blue"
+            elif self.board[3][1] == 6:
+                return "red"
+        elif position == 11:
+            if self.board[0][1] == 4:
+                return "yes"
+            elif self.board[0][1] == 5:
+                return "blue"
+            elif self.board[0][1] == 6:
+                return "red"
+        else:
+            return "yes"
+
     def sold_house(self, position):
         if position == 1:
             self.board[0][1] = 1
