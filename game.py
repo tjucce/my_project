@@ -11,13 +11,15 @@ class Game:
         self.blue_player = BluePlayer(BluePosition(0))
         self.red_player = RedPlayer(RedPosition(0))
         self.running = True
-        self.blue_name = input("Blue player what is you name: ")
-        self.red_name = input("Red player what is you name: ")
+        self.blue_name = ""
+        self.red_name = ""
         self.board = Board()
         self.turn = 1
         self.rolls = 1
 
     def run(self):
+        self.blue_name = input("Blue player what is you name: ")
+        self.red_name = input("Red player what is you name: ")
         print(f"Welcome {self.blue_name} and {self.red_name} lets play monopoly\n This is the rules")
         print(rules)
         while self.running:
@@ -48,7 +50,7 @@ class Game:
                     self.blue_player.pay_rent(self.blue_player.my_position())
                     self.red_player.collect_rent(self.blue_player.my_position())
                     if self.blue_player.money < 0:
-                        print(f"Game over, {self.blue_name} won")
+                        print(f"Game over, {self.red_name} won")
                         self.running = False
                     self.turn = 2
                     self.rolls = 1
@@ -74,15 +76,11 @@ class Game:
 
         elif blue_command.lower() == "sell":
             position = self.blue_player.my_position()
-            place = [1, 4, 8, 11]
-            if position in place:
-                if self.board.owner(position) == "blue":
-                    self.board.sold_house(position)
-                    self.blue_player.sell_property(position)
-                else:
-                    print("You need to own the house before you can sell it")
+            if self.board.owner(position) == "blue":
+                self.board.sold_house(position)
+                self.blue_player.sell_property(position)
             else:
-                print("You can't sell, you need to be standing on your house to sell")
+                print("You need to stand on a house you own before you can sell")
 
         elif blue_command.lower() == "done":
             self.turn = 2
@@ -146,15 +144,11 @@ class Game:
 
         elif red_command.lower() == "sell":
             position = self.red_player.my_position()
-            place = [1, 4, 8, 11]
-            if position in place:
-                if self.board.owner(position) == "red":
-                    self.board.sold_house(position)
-                    self.red_player.sell_property(position)
-                else:
-                    print("You need to own the house before you can sell it")
+            if self.board.owner(position) == "red":
+                self.board.sold_house(position)
+                self.red_player.sell_property(position)
             else:
-                print("You can't sell, you need to be standing on your house to sell")
+                print("You need to stand on a house you own before you can sell")
 
         elif red_command.lower() == "done":
             self.turn = 1

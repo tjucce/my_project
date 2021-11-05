@@ -4,10 +4,10 @@ from terminal_color import color_print
 class Board:
     def __init__(self):
         self.board = [
-                [7, 5, 7, 7],
-                [5, 0, 0, 5],
+                [7, 1, 7, 7],
+                [4, 0, 0, 2],
                 [7, 0, 0, 7],
-                [7, 5, 7, 7]
+                [7, 3, 7, 7]
             ]
 
     def print_board(self):
@@ -145,39 +145,27 @@ class Board:
                 print("You already own this house")
             else:
                 self.board[0][1] = 5
-                print("Congratulations you bought the yellow house")
-        elif position == 2:
-            print("No house to buy on this position")
-        elif position == 3:
-            print("No house to buy on this position")
+                return print("Congratulations you bought the yellow house")
         elif position == 4:
             if self.board[1][3] == 5:
                 print("You already own this house")
             else:
                 self.board[1][3] = 5
-                print("Congratulations you bought the purple house")
-        elif position == 5:
-            print("No house to buy on this position")
-        elif position == 6:
-            print("No house to buy on this position")
-        elif position == 7:
-            print("No house to buy on this position")
+                return print("Congratulations you bought the purple house")
         elif position == 8:
             if self.board[3][1] == 5:
                 print("You already own this house")
             else:
                 self.board[3][1] = 5
-                print("Congratulations you bought the green house")
-        elif position == 9:
-            print("No house to buy on this position")
-        elif position == 10:
-            print("No house to buy on this position")
+                return print("Congratulations you bought the green house")
         elif position == 11:
             if self.board[1][0] == 5:
                 print("You already own this house")
             else:
                 self.board[1][0] = 5
-                print("Congratulations you bought the black house")
+                return print("Congratulations you bought the black house")
+        elif position == 2 or 3 or 5 or 6 or 7 or 9 or 10:
+            return print("No house to buy on this position")
 
     def check_owner_red_player(self, position):
         if position == 1:
@@ -185,39 +173,27 @@ class Board:
                 print("You already own this house")
             else:
                 self.board[0][1] = 6
-                print("Congratulations you bought the house")
-        elif position == 2:
-            print("No house to buy on this position")
-        elif position == 3:
-            print("No house to buy on this position")
+                return print("Congratulations you bought the yellow house")
         elif position == 4:
             if self.board[1][3] == 6:
                 print("You already own this house")
             else:
                 self.board[1][3] = 6
-                print("Congratulations you bought the house")
-        elif position == 5:
-            print("No house to buy on this position")
-        elif position == 6:
-            print("No house to buy on this position")
-        elif position == 7:
-            print("No house to buy on this position")
+                return print("Congratulations you bought the purple house")
         elif position == 8:
             if self.board[3][1] == 6:
                 print("You already own this house")
             else:
                 self.board[3][1] = 6
-                print("Congratulations you bought the house")
-        elif position == 9:
-            print("No house to buy on this position")
-        elif position == 10:
-            print("No house to buy on this position")
+                return print("Congratulations you bought the green house")
         elif position == 11:
             if self.board[1][0] == 6:
                 print("You already own this house")
             else:
                 self.board[1][0] = 6
-                print("Congratulations you bought the house")
+                return print("Congratulations you bought the black house")
+        elif position == 2 or 3 or 5 or 6 or 7 or 9 or 10:
+            return print("No house to buy on this position")
 
     def owner(self, position):
         if position == 1:
@@ -242,11 +218,11 @@ class Board:
             elif self.board[3][1] == 6:
                 return "red"
         elif position == 11:
-            if self.board[0][1] == 4:
+            if self.board[1][0] == 4:
                 return "yes"
-            elif self.board[0][1] == 5:
+            elif self.board[1][0] == 5:
                 return "blue"
-            elif self.board[0][1] == 6:
+            elif self.board[1][0] == 6:
                 return "red"
         else:
             return "yes"

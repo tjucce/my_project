@@ -52,21 +52,35 @@ class RedPlayer:
 
     def sell_property(self, position):
         if position == 1:
-            self.money += houses[0]["price"]
-            self.portfolio.remove("A yellow house")
-            print(f"You sold your house, you now have {self.money}$ left in your bank")
+            if "A yellow house" in self.portfolio:
+                self.money += houses[0]["price"]
+                self.portfolio.remove("A yellow house")
+                print(f"You sold your house, you now have {self.money}$ left in your bank")
+            else:
+                print("You need to own the house first if you want to sell it")
         elif position == 4:
-            self.money += houses[1]["price"]
-            self.portfolio.remove("A purple house")
-            print(f"You sold your house, you now have {self.money}$ left in your bank")
+            if "A purple house" in self.portfolio:
+                self.money += houses[1]["price"]
+                self.portfolio.remove("A purple house")
+                print(f"You sold your house, you now have {self.money}$ left in your bank")
+            else:
+                print("You need to own the house first if you want to sell it")
         elif position == 8:
-            self.money += houses[2]["price"]
-            self.portfolio.remove("A green house")
-            print(f"You sold your house, you now have {self.money}$ left in your bank")
+            if "A green house" in self.portfolio:
+                self.money += houses[2]["price"]
+                self.portfolio.remove("A green house")
+                print(f"You sold your house, you now have {self.money}$ left in your bank")
+            else:
+                print("You need to own the house first if you want to sell it")
         elif position == 11:
-            self.money += houses[3]["price"]
-            self.portfolio.remove("A black house")
-            print(f"You sold your house, you now have {self.money}$ left in your bank")
+            if "A black house" in self.portfolio:
+                self.money += houses[3]["price"]
+                self.portfolio.remove("A black house")
+                print(f"You sold your house, you now have {self.money}$ left in your bank")
+            else:
+                print("You need to own the house first if you want to sell it")
+        else:
+            print("You can't sell, you need to be standing on a house you own to sell")
 
     def show_portfolio(self):
         if len(self.portfolio) > 0:
