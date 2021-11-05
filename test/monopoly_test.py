@@ -5,11 +5,11 @@ from game import Game
 class MyTestCase(unittest.TestCase):
     def test_buy_house(self):
         game = Game()
-        game.blue_player.placement = 1
-        position = game.blue_player.placement
-        game.blue_player.buy_property(position)
-        game.board.check_owner_blue_player(position)
-        self.assertEqual(game.blue_player.portfolio, ["A yellow house"])
+        game.red_player.placement = 1
+        position = game.red_player.placement
+        game.red_player.buy_property(position)
+        game.board.check_owner_red_player(position)
+        self.assertEqual(game.red_player.portfolio, ["A yellow house"])
 
     def test_buy_to_expensive(self):
         game = Game()
